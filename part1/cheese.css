@@ -1,0 +1,60 @@
+  /* Jamie Han
+     Repository: https://github.com/jamiexhan/cse134-hw3 */
+body{
+    font-family: 'helvetica', Arial,sans-serif;
+    color: #45220b;
+    background-color: rgb(236, 225, 205);
+    line-height: 1.5;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+
+h1 {
+  font-size: 10rem;
+}
+/* Cascade: The rule for cascade is that if two rules have the same specificity, 
+   the one that comes later in the CSS file will be the on that is presented.
+   H1 is therefore 2.5rem, not 10rem. */
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+.latin{
+    font-style: italic;
+}
+
+
+#warning {
+    color: white;
+    background-color: maroon;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+blockquote{
+    font-style: italic;
+    border: 4px solid #45220b;
+    padding: 1rem;
+    margin: 2rem;
+}
+
+a:hover {
+  color: #b00020;
+  text-decoration: none;
+  background-color: #fff3cd;
+}
+
+a:focus,
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: 3px solid #1a5fb4;
+  outline-offset: 2px;
+}

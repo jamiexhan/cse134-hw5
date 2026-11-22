@@ -1,0 +1,317 @@
+/* Jamie Han
+   Repository: https://github.com/jamiexhan/cse134-hw3 */
+
+:root {
+  --teal-green: #487A71;
+  --dark-green: #1f3c36;
+  --light-green: #eff9f4;
+  --font-main: 'Outfit', Arial, sans-serif;
+  --font-caption: 'IBM Plex Mono', monospace;
+
+  /* ----- LIGHT THEME ----- */
+  --bg: var(--light-green);
+  --text: var(--dark-green);
+  --surface: white;
+  --header-bg: var(--teal-green);
+  --header-text: white;
+  --footer-bg: rgb(216, 250, 241);
+  --border: var(--teal-green);
+  --link-text: var(--dark-green);
+  --link-bg: var(--light-green);
+  --link-border: var(--dark-green);
+  --link-hover-bg: var(--dark-green);
+  --link-hover-text: white;
+  --input-bg: white;
+  --input-border: var(--dark-green);
+  --invalid-border: red;
+  --invalid-bg: #ffe5e5;
+  --valid-border: var(--teal-green);
+  --warn-text: #a95b0e;
+  --warn-border: #c96e13;
+  --limit-text: #7a0000;
+  --focus: var(--dark-green);
+  --header-focus: var(--light-green);
+}
+
+/* ----- DARK THEME: same names, new values ----- */
+:root[data-theme="dark"] {
+  --bg: #12221f;
+  --text: #e3f2ec;
+  --surface: #1b322d;
+  --header-bg: #1f3c36;
+  --header-text: #eff9f4;
+  --footer-bg: #1b322d;
+  --border: #6fb3a5;
+  --link-text: #e3f2ec;
+  --link-bg: #1b322d;
+  --link-border: #8cc7ba;
+  --link-hover-bg: #eff9f4;
+  --link-hover-text: #1f3c36;
+  --input-bg: #0e1b18;
+  --input-border: #8cc7ba;
+  --invalid-border: #ff8a80;
+  --invalid-bg: #3d1f1f;
+  --valid-border: #6fb3a5;
+  --warn-text: #ffd966;
+  --warn-border: #ffd966;
+  --limit-text: #d48e8e;
+  --focus: #ffd966;
+  --header-focus: #ffd966;
+}
+
+body{
+    font-family: var(--font-main);
+    color: var(--text);
+    /* backup color in case I no longer want to use color above-> color: #2B5A4F; */
+    background-color: var(--bg);
+    line-height: 1.5;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+img,
+iframe,
+video {
+  max-width: 100%;
+}
+
+iframe {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+img,
+video {
+  height: auto;
+}
+
+header{ 
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  margin: 0 -1rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+footer {
+  background-color: var(--footer-bg);
+  border-top: 2px solid var(--border);
+  margin: 1rem -1rem 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  text-align: center;
+  padding: 0.5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+h3{
+  font-family: var(--font-caption);
+  font-size: 1.25rem;
+}
+
+p{
+  color: var(--text);
+}
+
+main {
+  padding: 1rem;
+}
+
+project-card {
+  border: 2px solid var(--border);
+  border-radius: 0.7rem;
+  background-color: var(--surface);
+  display: block;
+  padding: 0 2rem 2rem 2rem;
+  margin: 1rem 0;
+}
+
+nav ul {
+  display: flex; 
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.5em 1em;
+  border: 2px solid var(--link-border);
+  background-color: var(--link-bg);
+  border-radius: 0.7rem;
+  text-decoration: none;
+  color: var(--link-text);
+}
+
+a:hover {
+  background-color: var(--link-hover-bg);
+  color: var(--link-hover-text);
+}
+
+a:focus,
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+form p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0 0 1rem; 
+}
+
+label{
+  font-weight: bold;
+}
+
+button {
+  padding: 0.5em 1em;
+  border: 2px solid var(--link-border);
+  border-radius: 0.7rem;
+  background-color: var(--link-bg);
+  color: var(--link-text);
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: var(--link-hover-bg);
+  color: var(--link-hover-text);
+}
+
+/*To give more contrast in nav bar highlight vs background*/
+header a:focus,
+header button:focus {
+  outline-color: var(--header-focus);
+}
+
+fieldset {
+  min-width: 0;
+  padding: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 0.7rem;
+}
+
+/* Attribute selector: target the text and email inputs by their type attribute;
+   textarea is grouped in so all three form fields look consistent(on the contact page) */
+input[type="text"],
+input[type="email"],
+textarea{
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.5em;
+  max-width: 24rem;
+  box-sizing: border-box;
+  border: 2px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--text);
+}
+
+input:required,
+textarea:required {
+  border-left-width: 6px;
+}
+
+input:user-invalid, textarea:user-invalid {
+  border-color: var(--invalid-border);
+  background-color: var(--invalid-bg);
+  border-style: dashed;
+}
+
+input:user-valid, textarea:user-valid {
+  border-color: var(--valid-border);
+  border-style: solid;
+}
+
+textarea{
+  resize: vertical;
+}
+
+small{
+  color: var(--text);
+}
+
+/* Child combinator: targets only articles that are direct children of a section
+   (in gallery page) */
+section > article {
+  text-align: center;
+}
+
+/* Descendant combinator: targets p that lives anywhere inside a section
+   (in index & gallery page dialog box) */
+section p{
+  border-left: 2px solid var(--border);
+  padding-left: 0.5rem;
+}
+
+@media (min-width: 48rem) {
+  main {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  nav ul {
+    flex-direction: column;
+  }
+  nav a {
+    display: block;
+    text-align: center;
+  }
+}
+
+/*near limit */
+.count-warning {
+  font-weight: bold;
+  color: var(--warn-text);
+  border-left: 4px solid var(--warn-text);
+  padding-left: 0.5rem;
+}
+
+/*at the limit */
+.count-limit {
+  font-weight: bold;
+  color: var(--limit-text);
+  border-left: 8px double var(--limit-text);
+  padding-left: 0.5rem;
+}
+
+dialog {
+  background-color: var(--surface);
+  color: var(--text);
+  border: 2px solid var(--border);
+}
+
+[hidden] {
+  display: none;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.6s;
+}
+
+/* remove the animation entirely */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
+}

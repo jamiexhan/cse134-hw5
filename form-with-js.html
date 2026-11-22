@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact With JS | Jamie Han</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="form.js" defer></script>
+  <script src="theme.js" defer></script>
+</head>
+<body>
+  <header>
+    <button type="button" id="theme-toggle" hidden>Switch to dark theme</button>
+    <h1>Contact With JS</h1>
+    <nav>
+      <ul>
+        <li><a class="nav-links" href="index.html">Home</a></li>
+        <li><a class="nav-links" href="case-studies.html">Case Studies</a></li>
+        <li><a class="nav-links" href="design-work.html">Design Work</a></li>
+        <li><a class="nav-links" href="contact.html">Contact</a></li>
+        <li><a class="nav-links" href="form-no-js.html">Contact No JS</a></li>
+        <li><a class="nav-links" href="form-with-js.html">Contact With JS</a></li>
+        <li><a class="nav-links" href="experiments.html">Experiments</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>I would love to hear from you!</h2>
+    <form action="https://httpbin.org/post" method="post" name="contact">
+      <fieldset>
+        <legend>Send a message</legend>
+        <p>
+          <label for="name">Name <span>(required)</span></label>
+          <small id="name-hint">Enter your full name (1 to 100 characters).</small>
+          <input type="text" id="name" name="name" autocomplete="name" aria-describedby="name-hint" required minlength="1" maxlength="100">
+        </p>
+
+        <p>
+          <label for="email">Email <span>(required)</span></label>
+          <small id="email-hint">Enter your email address.</small>
+          <input type="email" id="email" name="email" autocomplete="email" aria-describedby="email-hint" required>
+        </p>
+
+        <p>
+          <label for="comments">Comments <span>(required)</span></label>
+          <small id="comments-hint">Tell me what you'd like to talk about (10 to 1,000 characters).</small>
+          <textarea id="comments" name="comments" rows="5" aria-describedby="comments-hint" required minlength="10" maxlength="1000"></textarea>
+        </p>
+
+        <input type="hidden" name="possible_bot" value="true">
+        <input type="hidden" id="form-errors" name="form-errors" value="">
+
+        <section id="error-area" aria-labelledby="error-heading" hidden>
+        <h3 id="error-heading">Form Errors</h3>
+        <div aria-live="polite">
+          <p id="name-error"></p>
+          <p id="email-error"></p>
+          <p id="comments-error"></p>
+        </div>
+      </section>
+
+      <section id="info-area" aria-labelledby="info-heading" hidden>
+        <h3 id="info-heading">Message Info</h3>
+        <p id="comments-info"></p>
+      </section>
+
+        <button type="submit">Send</button>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer>
+    <p>UC San Diego<br>Expected Graduation: Spring 2027</p>
+    <p>&copy; 2026 Jamie Han</p>
+  </footer>
+</body>
+</html>

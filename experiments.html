@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Experiments | Jamie Han</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="theme.js" defer></script>
+</head>
+<body>
+  <header>
+    <button type="button" id="theme-toggle" hidden>Switch to dark theme</button>
+    <h1>Experiments</h1>
+    <nav>
+      <ul>
+        <li><a class="nav-links" href="index.html">Home</a></li>
+        <li><a class="nav-links" href="case-studies.html">Case Studies</a></li>
+        <li><a class="nav-links" href="design-work.html">Design Work</a></li>
+        <li><a class="nav-links" href="contact.html">Contact</a></li>
+        <li><a class="nav-links" href="form-no-js.html">Contact No JS</a></li>
+        <li><a class="nav-links" href="form-with-js.html">Contact With JS</a></li>
+        <li><a class="nav-links" href="experiments.html">Experiments</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Experimentation Portfolio</h2>
+    <p>The tags I will be experimenting with include: template, audio, video, canvas, source</p>
+
+    <section>
+      <h3>Template</h3>
+      <p>Template is not displayed. It stores markup that JavaScript can use for later.</p>
+      <template>
+        <article>
+          <h4>Template Experiment</h4>
+          <p>This is an experiment using the template tag, where Javascript copies it onto the page.</p>
+        </article>
+      </template>
+    </section>
+
+    <section>
+      <h3>Audio and Source</h3>
+      <p>The source file inside an audio player.</p>
+      <audio controls>
+        <source src="song.mp3" type="audio/mpeg">
+        <p>Your browser does not support the audio element.</p>
+      </audio>
+    </section>
+
+    <section>
+      <h3>Video and Source</h3>
+      <p>Source file inside video player.</p>
+      <video controls width="320" height="180">
+        <source src="gradient.mp4" type="video/mp4">
+        <p>Your browser does not support video playback.</p>
+      </video>
+    </section>
+
+    <section>
+      <h3>Canvas</h3>
+      <p>Surface for graphics to be drawn.</p>
+      <canvas id="demo" width="300" height="150">
+      <p>Your browser does not support the canvas element.</p>
+      </canvas>
+    </section>
+
+    <section>
+      <h3>MathML</h3>
+      <p>Einstein's formula for mass-energy equivalence, written with MathML:</p>
+
+      <math display="block" alttext="E equals m c squared">
+        <mrow>
+          <mi>E</mi>
+          <mo>=</mo>
+          <mi>m</mi>
+          <msup>
+            <mi>c</mi>
+            <mn>2</mn>
+          </msup>
+        </mrow>
+      </math>
+      <p>Here <em>E</em> is energy, <em>m</em> is mass, and <em>c</em> is the speed of light.</p>
+
+      <p>MathML couldn't be used by developers because there are browsers out there that were unable to support it. On caniuse.com, Chrome 4-23 and 25-96 cannot enable this feature at all. Edge 12-96 and Safari iOS 3.2-4.3 also doesn't allow this feature. If many of the browsers would show this feature as broken, it would be risky to use MathML. Therefore, javascript libraries would be used instead. However, MathML support has been added recently in Chrome browsers as the feature became easier to implement.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>UC San Diego<br>Expected Graduation: Spring 2027</p>
+    <p>&copy; 2026 Jamie Han</p>
+  </footer>
+  <noscript>
+    <p>This page uses JavaScript to draw the canvas. Everything else can be viewed without it.</p>
+  </noscript>
+
+  <script>
+    const canvas = document.getElementById("demo");
+    const pen = canvas.getContext("2d");
+    pen.fillStyle = "blue";
+    pen.fillRect(20, 20, 120, 80);
+    pen.strokeStyle = "black";
+    pen.strokeRect(20, 20, 120, 80);
+    pen.font = "12px sans-serif";
+    pen.fillStyle = "black";
+    pen.fillText("Blue rectangle", 160, 70);
+  </script>
+
+</body>
+</html>
