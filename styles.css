@@ -1,5 +1,5 @@
 /* Jamie Han
-   Repository: https://github.com/jamiexhan/cse134-hw3 */
+   Repository: https://github.com/jamiexhan/cse134-hw5 */
 
 :root {
   --teal-green: #487A71;
@@ -261,13 +261,22 @@ section p{
 }
 
 fun-facts {
+  --facts-bg: var(--surface, white);
+  --facts-text: var(--text, black);
+  --facts-border: var(--border, gray);
+  --facts-focus: var(--focus, blue);
+
   display: block;
-  border: 2px solid var(--border);
+  border: 2px solid var(--facts-border, gray);
   border-radius: 0.7rem;
-  background-color: var(--surface);
-  color: var(--text);
+  background-color: var(--facts-bg, white);
+  color: var(--facts-text, black);
   padding: 1rem;
   margin: 1rem 0;
+}
+
+fun-facts button:focus {
+  outline-color: var(--facts-focus, blue);
 }
 
 #compact-toggle {

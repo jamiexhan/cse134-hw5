@@ -95,15 +95,57 @@ class FunFacts extends HTMLElement {
 customElements.define('fun-facts', FunFacts);
 
 
+//Button outside component
 const toggleButton = document.getElementById('compact-toggle');
 const funFacts = document.querySelector('fun-facts');
 
-toggleButton.addEventListener('click', () => {
-  const isCompact = funFacts.toggleAttribute('data-compact');
+// A key specific to this component, so it doesn't clash with the site theme's key
+const storageKey = 'hw5-fun-facts';
 
-  if (isCompact) {
+// Reads the saved mode. If storage is blocked, return null instead of crashing.
+function getSavedMode() {
+  try {
+    return localStorage.getItem(storageKey);
+  } catch (error) {
+    return null;
+  }
+}
+
+function saveMode(mode) {
+  try {
+    localStorage.setItem(storageKey, mode);
+  } catch (error) {
+    console.warn('The component mode could not be saved.');
+  }
+}
+
+function applyMode(mode) {
+  funFacts.toggleAttribute('data-compact', mode === 'compact');
+
+  if (mode === 'compact') {
     toggleButton.textContent = 'Switch to expanded view';
   } else {
     toggleButton.textContent = 'Switch to compact view';
   }
+}
+
+//Use save mode if valid, else default to expanded.
+const savedMode = getSavedMode();
+if (savedMode === 'compact') {
+  applyMode('compact');
+} else {
+  applyMode('expanded');
+}
+
+//Save mode immediately after click
+toggleButton.addEventListener('click', () => {
+  let newMode = 'compact';
+  if (funFacts.hasAttribute('data-compact')) {
+    newMode = 'expanded';
+  }
+  applyMode(newMode);
+  saveMode(newMode);
 });
+
+funFacts.hidden = false;
+toggleButton.hidden = false;
