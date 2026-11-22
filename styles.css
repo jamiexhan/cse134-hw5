@@ -260,6 +260,16 @@ section p{
   padding-left: 0.5rem;
 }
 
+fun-facts {
+  display: block;
+  border: 2px solid var(--border);
+  border-radius: 0.7rem;
+  background-color: var(--surface);
+  color: var(--text);
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
 @media (min-width: 48rem) {
   main {
     padding: 2rem;
