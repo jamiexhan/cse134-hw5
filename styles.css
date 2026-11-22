@@ -270,6 +270,11 @@ fun-facts {
   margin: 1rem 0;
 }
 
+#compact-toggle {
+  display: block;
+  margin: 1rem auto;
+}
+
 @media (min-width: 48rem) {
   main {
     padding: 2rem;
