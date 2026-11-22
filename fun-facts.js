@@ -6,67 +6,86 @@ class FunFacts extends HTMLElement {
 
   constructor() {
     super();
-    this.items = [
-      {
-        title: 'I am a dancer!',
-        detail: 'I have performed and competed in various styles, including contemporary, hip hop, lyrical, jazz, drill, and colorguard.'
-      },
-      {
-        title: 'A camera hobbyist',
-        detail: 'I am a photography and film hobbyist, photographing landscapes and creating rhythm-based video montages.'
-      }
-    ];
-    //Which card is showing (0 = the first one)
-    this.index = 0;
+    this.count = 0;
   }
 
-  //Runs when the component is added to the page
   connectedCallback() {
-    this.heading = document.createElement('h3');
-    this.heading.textContent = 'Get to know me';
+    this.itemTitle = document.createElement('h3');
+    this.itemTitle.textContent = 'Random useless fact';
 
-    this.itemTitle = document.createElement('h4');
+    this.factText = document.createElement('p');
+    this.factText.textContent = 'Press the button to load a fact.';
+
     this.itemDetail = document.createElement('p');
+    this.itemDetail.textContent = 'Source: appears after a fact loads.';
 
     this.status = document.createElement('p');
-    this.status.setAttribute('role', 'status');   //screen readers announce changes
+    this.status.setAttribute('role', 'status');
 
     this.nextButton = document.createElement('button');
     this.nextButton.type = 'button';
-    this.nextButton.textContent = 'Next fact';
+    this.nextButton.textContent = 'Get a fact';
 
-    //Arrow keeps "this" pointing at the component
+    //Request
     this.nextButton.addEventListener('click', () => {
-      this.index = this.index + 1;
-      if (this.index >= this.items.length) {
-        this.index = 0;                 //wrap around to the first card
-      }
-      this.render();
+      this.loadFact();
     });
 
-    this.appendChild(this.heading);
     this.appendChild(this.itemTitle);
+    this.appendChild(this.factText);     
     this.appendChild(this.itemDetail);
     this.appendChild(this.status);
     this.appendChild(this.nextButton);
 
-    this.render();                      
+    this.render();
   }
 
   render() {
-    const item = this.items[this.index];
-    this.itemTitle.textContent = item.title;
-    this.itemDetail.textContent = item.detail;
-
-    //Compact mode hides detail line, expanded mode shows it
     this.itemDetail.hidden = this.hasAttribute('data-compact');
-
-    this.status.textContent = 'Fact ' + (this.index + 1) + ' of ' + this.items.length;
   }
 
-  //Calls this when data-compact is added, changed, or removed
+  async loadFact() {
+    this.nextButton.disabled = true;
+    this.nextButton.textContent = 'Loading...';
+    this.status.textContent = 'Loading a new fact...';
+
+    try {
+      const response = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/random?language=en');
+
+      if (!response.ok) {
+        throw new Error('HTTP status ' + response.status);
+      }
+
+      const data = await response.json();
+
+      if (typeof data?.text !== 'string' || data.text === '') {
+        throw new Error('Expected a fact in the response.');
+      }
+
+      this.factText.textContent = data.text;
+
+      if (typeof data.source === 'string') {
+        this.itemDetail.textContent = 'Source: ' + data.source;
+      } else {
+        this.itemDetail.textContent = 'Source: not provided';
+      }
+
+      this.count = this.count + 1;
+      this.status.textContent = 'Loaded fact ' + this.count + '.';
+      this.nextButton.textContent = 'Get another fact';
+
+    } catch (error) {
+      console.error('Could not load the fact.', error);
+      this.status.textContent = 'Could not load a fact. Check your connection and try again.';
+      this.nextButton.textContent = 'Try again';
+
+    } finally {
+      this.nextButton.disabled = false;
+    }
+  }
+
   attributeChangedCallback(name, oldValue, newValue) {
-    if (!this.itemTitle) {
+    if (!this.itemDetail) {
       return;
     }
     this.render();
@@ -80,8 +99,6 @@ const toggleButton = document.getElementById('compact-toggle');
 const funFacts = document.querySelector('fun-facts');
 
 toggleButton.addEventListener('click', () => {
-  // Adds data-compact if missing, removes it if present.
-  // Returns true when the attribute is now on.
   const isCompact = funFacts.toggleAttribute('data-compact');
 
   if (isCompact) {

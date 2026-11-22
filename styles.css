@@ -275,6 +275,10 @@ fun-facts {
   margin: 1rem auto;
 }
 
+[hidden] {
+  display: none;
+}
+
 @media (min-width: 48rem) {
   main {
     padding: 2rem;
