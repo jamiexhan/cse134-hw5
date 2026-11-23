@@ -11,7 +11,7 @@ class FunFacts extends HTMLElement {
 
   connectedCallback() {
     this.itemTitle = document.createElement('h3');
-    this.itemTitle.textContent = 'Random useless fact';
+    this.itemTitle.textContent = 'RANDOM FACTS';
 
     this.factText = document.createElement('p');
     this.factText.textContent = 'Press the button to load a fact.';
@@ -99,10 +99,8 @@ customElements.define('fun-facts', FunFacts);
 const toggleButton = document.getElementById('compact-toggle');
 const funFacts = document.querySelector('fun-facts');
 
-// A key specific to this component, so it doesn't clash with the site theme's key
 const storageKey = 'hw5-fun-facts';
 
-// Reads the saved mode. If storage is blocked, return null instead of crashing.
 function getSavedMode() {
   try {
     return localStorage.getItem(storageKey);

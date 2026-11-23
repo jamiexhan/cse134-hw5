@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | Jamie Han</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@100..900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/theme.js" defer></script>
+  <script src="/fun-facts.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <button type="button" id="theme-toggle" hidden>Switch to dark theme</button>
+    <h1>Jamie Han</h1>
+    <nav>
+      <ul>
+        <li><a class="nav-links" href="index.html">Home</a></li>
+        <li><a class="nav-links" href="case-studies.html">Case Studies</a></li>
+        <li><a class="nav-links" href="design-work.html">Design Work</a></li>
+        <li><a class="nav-links" href="contact.html">Contact</a></li>
+        <li><a class="nav-links" href="form-no-js.html">Contact No JS</a></li>
+        <li><a class="nav-links" href="form-with-js.html">Contact With JS</a></li>
+        <li><a class="nav-links" href="experiments.html">Experiments</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <hello-world></hello-world>
+    <h2>A tech savvy creative aspiring to be a <i>UX/UI designer.</i></h2>
+
+    <section>
+      <h3>ABOUT ME</h3>
+      <p>Hi, my name is Jamie Han. I am a student at UCSD studying Cognitive Science with a specialization in Human
+        Computer Interaction.</p>
+      <p>Currently a UX/UI intern @ Data Science Alliance, a food enthusiast, and a video editor hobbyist <em>really
+          passionate</em> about rhythm based editing.</p>
+    </section>
+
+    <section>
+      <h3>TOOLS I USE</h3>
+      <ul>
+        <li>Figma</li>
+        <li>Adobe Creative Suite</li>
+        <li>TypeScript</li>
+        <li>React</li>
+        <li>GitHub</li>
+      </ul>
+    </section>
+
+    <project-card>
+      <article>
+        <h3>FEATURED PROJECT</h3>
+        <p>Cosmo Connect is a platform for career exploration and mentorship.</p>
+        <a href="project-1.html">Read the full case study.</a>
+      </article>
+    </project-card>
+
+    <section>
+      <h2>Fun Facts About Me</h2>
+      <button type="button" id="compact-toggle">Switch to compact view</button>
+      <fun-facts hidden></fun-facts>
+      <noscript>
+        <p>Enable JavaScript to load live data.</p>
+      </noscript>
+    </section>
+
+  </main>
+
+    <footer>
+    <p>UC San Diego<br>Expected Graduation: Winter 2027</p>
+    <p>&copy; 2026 Jamie Han</p>
+  </footer>
+  <script>
+    class HelloWorld extends HTMLElement {
+      connectedCallback() {
+        console.log("Hello World!");
+      }
+    }
+    customElements.define("hello-world", HelloWorld);
+  </script>
+</body>
+
+</html>
