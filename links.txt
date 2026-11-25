@@ -1,3 +1,3 @@
 https://github.com/jamiexhan/cse134-hw5
-https://jamiehan-hw5.netlify.app/ 
-https://jamiehan-hw5.netlify.app/
+https://cse134-hw5.vercel.app/ 
+https://cse134-hw5.vercel.app/
